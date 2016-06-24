@@ -14,8 +14,11 @@
 #define kViewWidth self.frame.size.width
 #define kViewHeight self.frame.size.height
 
-static NSInteger const topLineTag = 1008611321;
-static NSInteger const bottomLineTag = 1008611322;
+static NSInteger const topLineTag = 1008611111;
+static NSInteger const bottomLineTag = 1008611222;
+static NSInteger const leftLineTag = 1008611333;
+static NSInteger const rightLineTag = 1008611444;
+
 
 @implementation UIView (AddLine)
 
@@ -111,6 +114,48 @@ static NSInteger const bottomLineTag = 1008611322;
         make.left.equalTo(self.mas_left).offset(leftEdge);
         make.bottom.equalTo(self.mas_bottom).offset(0);
         make.right.equalTo(self.mas_right).offset(-rightEdge);
+    }];
+    
+    [self addLineEvent:view];
+}
+
+///增加左分割线
+- (void)addLeftLineWithLeftEdge:(CGFloat)topEdge
+                  withRightEdge:(CGFloat)bottomEdge {
+    UIView *view = [self viewWithTag:leftLineTag];
+    if (!view) {
+        view = [[UIView alloc] init];
+        view.tag = leftLineTag;
+        view.backgroundColor = [UIColor blackColor];
+        [self addSubview:view];
+    }
+    
+    [view mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(0.5);
+        make.left.equalTo(self.mas_left);
+        make.top.equalTo(self.mas_top).offset(topEdge);
+        make.bottom.equalTo(self.mas_bottom).offset(-bottomEdge);
+    }];
+    
+    [self addLineEvent:view];
+}
+
+///增加右分割线
+- (void)addRightLineWithLeftEdge:(CGFloat)topEdge
+                   withRightEdge:(CGFloat)bottomEdge {
+    UIView *view = [self viewWithTag:rightLineTag];
+    if (!view) {
+        view = [[UIView alloc] init];
+        view.tag = rightLineTag;
+        view.backgroundColor = [UIColor blackColor];
+        [self addSubview:view];
+    }
+    
+    [view mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(0.5);
+        make.right.equalTo(self.mas_right);
+        make.top.equalTo(self.mas_top).offset(topEdge);
+        make.bottom.equalTo(self.mas_bottom).offset(-bottomEdge);
     }];
     
     [self addLineEvent:view];

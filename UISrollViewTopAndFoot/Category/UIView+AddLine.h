@@ -37,4 +37,12 @@
 ///增加下分割线
 - (void)addBottomLineWithLeftEdge:(CGFloat)leftEdge
                     withRightEdge:(CGFloat)rightEdge;
+
+///增加左分割线
+- (void)addLeftLineWithLeftEdge:(CGFloat)topEdge
+                 withRightEdge:(CGFloat)bottomEdge;
+
+///增加右分割线
+- (void)addRightLineWithLeftEdge:(CGFloat)topEdge
+                    withRightEdge:(CGFloat)bottomEdge;
 @end

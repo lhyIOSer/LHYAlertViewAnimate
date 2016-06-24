@@ -10,4 +10,12 @@
 
 @implementation UIScrollView (TopOrFoot)
 
+- (void)scrollToTopWithAnimated:(BOOL)animated {
+    [self setContentOffset:CGPointMake(0, 0) animated:animated];
+}
+
+- (void)scrollToFootWithAnimated:(BOOL)animated {
+    [self setContentOffset:CGPointMake(0, self.contentSize.height - self.bounds.size.height) animated:animated];
+}
+
 @end

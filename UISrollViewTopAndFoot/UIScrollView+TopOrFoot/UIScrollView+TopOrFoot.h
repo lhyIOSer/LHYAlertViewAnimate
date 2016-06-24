@@ -10,4 +10,8 @@
 
 @interface UIScrollView (TopOrFoot)
 
+- (void)scrollToTopWithAnimated:(BOOL)animated;
+
+- (void)scrollToFootWithAnimated:(BOOL)animated;
+
 @end
